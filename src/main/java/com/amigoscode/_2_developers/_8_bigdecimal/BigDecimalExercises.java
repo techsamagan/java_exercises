@@ -2,6 +2,7 @@ package com.amigoscode._2_developers._8_bigdecimal;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.Scanner;
 
 /**
  * BigDecimal Exercises
@@ -137,5 +138,7 @@ public class BigDecimalExercises {
 
         System.out.println("\n=== Double Problem ===");
         demonstrateDoubleProblem();
+
+
     }
 }
