@@ -1,10 +1,13 @@
 package com.amigoscode._6_functionalinterfaces._1_gettingstarted;
 
+import com.amigoscode._6_functionalinterfaces._2_functionalinterfaces.FunctionExercise;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.function.BiFunction;
+import java.util.function.Function;
 
 /**
  * Exercise: Lambda Expressions
@@ -23,15 +26,22 @@ public class LambdaExpressions {
         //  by their length (shorter strings first). Use it to sort the names list.
         //  Hint: Use names.sort(...) or Collections.sort(names, ...)
 
+        Comparator<String> comparator = (s1, s2) -> Integer.compare(s1.length(), s2.length());
+        names.sort(comparator);
+
 
         System.out.println("Sorted by length: " + names);
 
         // TODO: 2 - Create a Runnable as a lambda that prints
         //  "Running in a lambda!" to the console. Then execute it by calling run().
-
+        Runnable runnable = () -> System.out.println("Running in a lambda!");
+        runnable.run();
 
         // TODO: 3 - Create a Callable<String> as a lambda that returns
         //  "Result from Callable". Then call it using call() and print the result.
+
+        Callable<String> callable = () -> "Result fron Callable!";
+        callable.call();
 
 
         // TODO: 4 - The following multi-line lambda calculates the sum of two
@@ -48,16 +58,32 @@ public class LambdaExpressions {
         //  concatenates two strings with " + " in between.
         //  Example: ("Hello", "World") -> "Hello + World"
 
+        BiFunction<String, String, String> biFunction = new BiFunction<String, String, String>() {
+            @Override
+            public String apply(String s, String s2) {
+                return s + s2;
+            }
+        }
+
 
         // TODO: 6 - Store a lambda in a variable called 'exclaim' of type
         //  java.util.function.Function<String, String> that appends "!" to
         //  any string. Then reuse it: apply it to "Hello" and "Goodbye",
         //  printing both results.
 
+        Function<String, String, String> exclaim = new Function<String, String, String>() {
+            @Override
+            public String apply(String s,  String s2) {
+                return s + s2;
+            }
+        }
+
 
         // TODO: 7 - Call the processName method below, passing a lambda directly
         //  (not stored in a variable) that converts a name to uppercase.
         //  Print the result.
+
+
 
     }
 

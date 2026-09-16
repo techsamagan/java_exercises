@@ -36,9 +36,8 @@ public class FunctionalInterfaceBasics {
         // TODO: 3 - Implement Greeting using a lambda expression.
         //  Use the full lambda syntax: (String name) -> { ... }
 
-        Greeting greeting2 = (name) -> {
-            System.out.println("Hello" + name);
-        };
+        Greeting greeting2 =name -> System.out.println("Hello" + name);
+
         // TODO: 4 - Implement Greeting using a shorter lambda.
         //  Since there is only one parameter, you can omit the parentheses
         //  and the type: name -> System.out.println(...)
@@ -49,9 +48,15 @@ public class FunctionalInterfaceBasics {
         // TODO: 5 - Call greet("Alice") on each of the three implementations above
         //  and observe the output.
 
+        greeting.greet("Alice");
+        greeting2.greet("Alice");
+        greeting3.greet("Alice");
+
 
         // TODO: 6 - Call the printGreeting method below, passing a Greeting lambda
         //  and the name "Bob". The lambda should print "Hey there, <name>!".
+
+        printGreeting(n -> System.out.println("Hey there, " + n + "!"), "Bob");
 
     }
 
