@@ -21,15 +21,20 @@ public class FunctionExercise {
         // TODO: 1 - Create a Function<String, Integer> called 'stringLength'
         //  that returns the length of a string.
 
+        Function<String, Integer> stringLength = str -> str.length();
+
 
         // TODO: 2 - Create a Function<String, String> called 'toUpperCase'
         //  that converts a string to uppercase.
 
+        Function<String, String> uppMake = str -> str.toUpperCase();
 
         // TODO: 3 - Chain 'toUpperCase' and 'stringLength' using andThen() to
         //  create a new function that first converts to uppercase, then gets
         //  the length. Apply it to "hello" and print the result.
         //  Hint: toUpperCase.andThen(stringLength)
+        uppMake.andThen(stringLength).apply("Hello");
+
 
 
         // TODO: 4 - Chain 'stringLength' and 'toUpperCase' using compose() to
@@ -37,12 +42,23 @@ public class FunctionExercise {
         //  Hint: stringLength.compose(toUpperCase)
         //  Note: compose applies the argument function FIRST.
 
+        stringLength.compose(uppMake).apply("Hello");
+
 
         // TODO: 5 - Create a Function<Integer, String> called 'intToWord' that
         //  converts integers 1-5 to their English word ("one", "two", ..., "five").
         //  For any other number, return "unknown".
         //  Hint: You can use a switch expression or if-else chain.
 
+        Function<Integer, String> iniToWord = num -> switch (num)
+        {
+            case 1 -> "one";
+            case 2 -> "two";
+            case 3 -> "three";
+            case 4 -> "four";
+            case 5 -> "five";
+            default -> "unknown";
+        };
 
         List<String> words = Arrays.asList("apple", "banana", "cherry", "date");
 
@@ -51,9 +67,21 @@ public class FunctionExercise {
         //  List<Integer> called 'lengths' and print it.
         //  Hint: Use words.stream().map(stringLength).collect(...)
 
+        words.stream().map(stringLength).collect(Collectors.toList());
+
 
         // TODO: 7 - Call the applyFunction method below, passing stringLength
         //  and the string "Functional Programming". Print the result.
+        // TODO: 7 - Call the applyFunction method below, passing stringLength
+//  and the string "Functional Programming". Print the result.
+
+        int result = applyFunction(stringLength, "Functional Programming");
+        System.out.println(result);
+
+        String res = applyFunction(uppMake, "Functional Programming");
+        System.out.println(res);
+
+
 
     }
 

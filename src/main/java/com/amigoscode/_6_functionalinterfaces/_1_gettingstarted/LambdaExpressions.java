@@ -63,7 +63,7 @@ public class LambdaExpressions {
             public String apply(String s, String s2) {
                 return s + s2;
             }
-        }
+        };
 
 
         // TODO: 6 - Store a lambda in a variable called 'exclaim' of type
@@ -71,12 +71,12 @@ public class LambdaExpressions {
         //  any string. Then reuse it: apply it to "Hello" and "Goodbye",
         //  printing both results.
 
-        Function<String, String, String> exclaim = new Function<String, String, String>() {
+        BiFunction<String, String, String> exclaim = new BiFunction<String, String, String>() {
             @Override
-            public String apply(String s,  String s2) {
+            public String apply(String s, String s2) {
                 return s + s2;
             }
-        }
+        };
 
 
         // TODO: 7 - Call the processName method below, passing a lambda directly
