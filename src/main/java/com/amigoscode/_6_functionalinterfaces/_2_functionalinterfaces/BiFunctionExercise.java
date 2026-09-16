@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
  *
  * Note: BiFunction does NOT have compose() because compose would need to produce
  * two values from one, which is not possible with a single function.
- */
+ **/
 public class BiFunctionExercise {
 
     public static void main(String[] args) {
@@ -26,22 +26,35 @@ public class BiFunctionExercise {
         //  that concatenates two strings with a space in between.
         //  Example: ("John", "Doe") -> "John Doe"
 
+        BiFunction<String, String, String> combiner = (str1, str2) -> str1 + str2;
+
 
         // TODO: 2 - Create a BiFunction<Integer, Integer, Integer> called 'max'
         //  that returns the larger of two integers.
         //  Hint: You can use Math.max or a ternary expression.
 
+        BiFunction<Integer, Integer, Integer> max = (num1, num2) -> Math.max(num1, num2);
 
         // TODO: 3 - Create a BiFunction<String, Integer, String> called 'repeat'
         //  that repeats a string N times.
         //  Example: ("Ha", 3) -> "HaHaHa"
         //  Hint: Use String.repeat(int) or a loop inside the lambda.
 
+        BiFunction<String, Integer, String> repeat = (str1, num) -> {
+            String res = "";
+            for (int i = 1; i <= num; i++) {
+                res += str1;
+            }
+            return res;
+        };
+
 
         // TODO: 4 - Use andThen() to chain 'combiner' with a Function<String, Integer>
         //  that returns the length of the combined string.
         //  Apply it to ("Hello", "World") and print the result.
         //  Expected: 11 (length of "Hello World")
+
+        combiner.andThen(String:: length).apply("Hello", "World");
 
 
         List<String> firstNames = Arrays.asList("Alice", "Bob", "Charlie");
@@ -54,6 +67,11 @@ public class BiFunctionExercise {
         //  Hint: IntStream.range(0, firstNames.size())
         //          .mapToObj(i -> describe.apply(firstNames.get(i), ages.get(i)))
         //          .collect(Collectors.toList())
+        BiFunction<String, Integer, String> describe =  (str1, str2) -> str1 + " is " + str2 + " years old";
+        List<String> descriptions = IntStream.range(0, firstNames.size())
+                .mapToObj(i -> describe.apply(firstNames.get(i), ages.get(i)))
+                .collect(Collectors.toList()); // or .toList() in Java 16+
 
+        System.out.println(descriptions);
     }
 }
