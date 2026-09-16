@@ -2,6 +2,7 @@ package com.amigoscode._7_streams._4_duplicates;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
 
@@ -30,25 +31,33 @@ public class DistinctExercise {
         // TODO: 1 - Remove duplicates from 'numbersWithDuplicates' using distinct()
         //           Print the resulting unique numbers
 
+        List<Integer> numberWithoutDuplicates = numbersWithDuplicates.stream().distinct().collect(Collectors.toList());
+
 
         // TODO: 2 - Remove duplicates from 'mixedCaseNames' in a case-insensitive manner
         //           Map all names to lowercase first, then use distinct()
         //           Print the resulting unique names
-
+        List<String> names = mixedCaseNames.stream().map(s -> s.toLowerCase()).distinct().collect(Collectors.toList());
 
         // TODO: 3 - Collect 'fruits' to a Set instead of using distinct()
         //           This automatically removes duplicates
         //           Print the resulting set
+
+        Set<String> fr = fruits.stream().collect(Collectors.toSet());
 
 
         // TODO: 4 - Count the number of distinct elements in 'numbersWithDuplicates'
         //           Use distinct() followed by count()
         //           Print the count
 
+        int num = Math.toIntExact(numbersWithDuplicates.stream().distinct().count());
+
 
         // TODO: 5 - Remove duplicate Person objects from 'people'
         //           Since Person is a record, equals/hashCode are auto-generated
         //           Use distinct() and print each unique person
+
+       List<Person> p =  people.stream().distinct().collect(Collectors.toList());
 
 
         // TODO: 6 - Remove duplicates from 'fruits' with custom logic using a TreeSet
