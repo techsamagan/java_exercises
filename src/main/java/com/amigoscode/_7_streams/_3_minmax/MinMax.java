@@ -47,16 +47,25 @@ public class MinMax {
         // TODO: 4 - Find the youngest person from 'people'
         //           Use Comparator.comparingInt(Person::age)
         //           Print the person's name and age
+        people.stream().min(Comparator.comparing(Person::age)).ifPresent(p -> System.out.println(p.name + " is " + p.age););
 
 
         // TODO: 5 - Find the maximum value in 'numbers' using reduce() instead of max()
         //           Use Integer::max as the binary operator
         //           Print the result
 
+        numbers.stream().reduce(Integer::max).ifPresent(System.out::println);
+
+
+
 
         // TODO: 6 - Handle the empty stream case: try to find min of 'emptyList'
         //           Use orElse() to provide a default value of -1
         //           Print the result
+
+        numbers.stream()
+                .min(Integer::compareTo)
+                .orElse(-1);
 
     }
 }
