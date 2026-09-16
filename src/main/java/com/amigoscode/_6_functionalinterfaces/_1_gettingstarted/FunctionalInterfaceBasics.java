@@ -14,21 +14,36 @@ public class FunctionalInterfaceBasics {
     // TODO: 1 - Define a @FunctionalInterface called Greeting with a single
     //  abstract method: void greet(String name)
     //  Remember to annotate it with @FunctionalInterface.
+    @FunctionalInterface
+    public interface Greeting{
+        void greet(String name);
+    }
 
 
     public static void main(String[] args) {
 
         // TODO: 2 - Implement Greeting using an anonymous class.
         //  The greet method should print "Hello, <name>!" to the console.
+        String name = "Samagan";
+        Greeting greeting = new  Greeting() {
+            @Override
+            public void greet(String name) {
+                System.out.println("Hello" + name);
+            }
+        };
 
 
         // TODO: 3 - Implement Greeting using a lambda expression.
         //  Use the full lambda syntax: (String name) -> { ... }
 
-
+        Greeting greeting2 = (name) -> {
+            System.out.println("Hello" + name);
+        };
         // TODO: 4 - Implement Greeting using a shorter lambda.
         //  Since there is only one parameter, you can omit the parentheses
         //  and the type: name -> System.out.println(...)
+
+        Greeting greeting3 = (name) -> System.out.println("Hello" + name);
 
 
         // TODO: 5 - Call greet("Alice") on each of the three implementations above
